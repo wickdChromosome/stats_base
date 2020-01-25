@@ -1,0 +1,3 @@
+/home/bkotis/Documents/dlib_template/build/dlib_build/test_for_libjpeg_build/CMakeFiles/rebuild_cache.dir
+/home/bkotis/Documents/dlib_template/build/dlib_build/test_for_libjpeg_build/CMakeFiles/libjpeg_test.dir
+/home/bkotis/Documents/dlib_template/build/dlib_build/test_for_libjpeg_build/CMakeFiles/edit_cache.dir
