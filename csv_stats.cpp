@@ -6,32 +6,50 @@ for statistical analysis from a csv file
 /* LAST COMPILED ON __DATE __ __TIME__*/
 
 
-#include "csv.h"
-#include <dlib/statistics.h>
+
 #include <vector>
 #include <string>
 #include <fstream>
 
+#include "matplotlibcpp.h"
+#include "csv.h"
+
+namespace plt = matplotlibcpp;
 using namespace std;
-using namespace dlib;
 
 int 
 main () 
 {
 
-	string INFILENAME= argv[1]; // input file name
-	int PROCESS_COLS = argv[2]; // number	of columns you are going to use
+	/* Vectors for the data */
+	vector<string> IDs;
+	vector<int> col1s;
+	vector<int> col2s;
+
+	/* Read in the csv */
+	const string INFILENAME= "test.csv"; // input file name
+	const int PROCESS_COLS = 3; // number of columns you are going to use
 
 	io::CSVReader<PROCESS_COLS> in(INFILENAME);
-	in.read_header(io::ignore_extra_column, "col1", "col2");
-	std::string vendor; int size; double speed;
-	while(in.read_row(col1, col2)){
+	in.read_header(io::ignore_extra_column, "ID", "col1", "col2");
+	string ID; int col1; int col2;
+	while(in.read_row(ID, col1, col2)){
 	
 		/*NOW ITS YOUR TIME TO SHINE*/
-					
-
+		IDs.push_back(ID);			
+		col1s.push_back(col1);			
+		col2s.push_back(col2);			
 
 	}
+
+
+	
+
+
+
+	/* PLOT SOME SHIT */
+	plt::plot(col1s,col2s);
+	plt::show();
 
 }
 

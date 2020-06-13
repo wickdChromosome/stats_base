@@ -1,6 +1,0 @@
-/home/bkotis/Documents/dlib_template/build/CMakeFiles/rebuild_cache.dir
-/home/bkotis/Documents/dlib_template/build/CMakeFiles/csv_stats.dir
-/home/bkotis/Documents/dlib_template/build/CMakeFiles/edit_cache.dir
-/home/bkotis/Documents/dlib_template/build/dlib_build/CMakeFiles/rebuild_cache.dir
-/home/bkotis/Documents/dlib_template/build/dlib_build/CMakeFiles/dlib.dir
-/home/bkotis/Documents/dlib_template/build/dlib_build/CMakeFiles/edit_cache.dir

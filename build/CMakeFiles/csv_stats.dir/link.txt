@@ -1,1 +1,0 @@
-/usr/bin/c++  -O3 -DNDEBUG  -rdynamic CMakeFiles/csv_stats.dir/csv_stats.cpp.o  -o csv_stats -Wl,-rpath,/home/bkotis/miniconda3/lib dlib_build/libdlib.a -lpthread -lnsl -lpng /home/bkotis/miniconda3/lib/libz.so -ljpeg -lblas -llapack 
