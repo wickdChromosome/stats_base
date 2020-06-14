@@ -11,45 +11,45 @@ for statistical analysis from a csv file
 #include <string>
 #include <fstream>
 
+#include <boost/accumulators/accumulators.hpp>
+#include <boost/accumulators/statistics.hpp>
+
 #include "matplotlibcpp.h"
 #include "csv.h"
 
 namespace plt = matplotlibcpp;
 using namespace std;
+using namespace boost::accumulators;
 
 int 
 main () 
 {
 
-	/* Vectors for the data */
-	vector<string> IDs;
-	vector<int> col1s;
-	vector<int> col2s;
+	/* Accumulators for the data */
+	accumulator_set<double, features<tag::mean, tag::median> > acc;
 
 	/* Read in the csv */
-	const string INFILENAME= "test.csv"; // input file name
-	const int PROCESS_COLS = 3; // number of columns you are going to use
+	const string INFILENAME= "test.vcf"; // input file name
+	const int PROCESS_COLS = 1; // number of columns you are going to use
 
-	io::CSVReader<PROCESS_COLS> in(INFILENAME);
-	in.read_header(io::ignore_extra_column, "ID", "col1", "col2");
-	string ID; int col1; int col2;
-	while(in.read_row(ID, col1, col2)){
+	io::CSVReader<PROCESS_COLS, io::trim_chars<' '>, io::no_quote_escape<'\t'>, io::throw_on_overflow, io::single_line_comment<'#'> > in(INFILENAME);
+	in.read_header(io::ignore_extra_column, "POS");
+	int pos;
+	while(in.read_row(pos)){
 	
 		/*NOW ITS YOUR TIME TO SHINE*/
-		IDs.push_back(ID);			
-		col1s.push_back(col1);			
-		col2s.push_back(col2);			
+		acc(pos);			
 
 	}
 
-
-	
+		
+	cout << mean(acc) << endl;	
 
 
 
 	/* PLOT SOME SHIT */
-	plt::plot(col1s,col2s);
-	plt::show();
+	//plt::plot(col1s,col2s);
+	//plt::show();
 
 }
 
