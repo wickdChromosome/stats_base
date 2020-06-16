@@ -28,7 +28,7 @@ map<string, double> read_csv(const string &filename, const string &afccol) {
 	map<string, double> new_data;
 
 	io::CSVReader<PROCESS_COLS, io::trim_chars<' '>, io::no_quote_escape<','>, io::throw_on_overflow > in(filename);
-	in.read_header(io::ignore_extra_column, "variant_id", afccol);
+	in.read_header(io::ignore_extra_column, "gene_id_variant_id", afccol);
 	double afc; string eqtl_id;
 	while(in.read_row(eqtl_id, afc)) {
       	/*NOW ITS YOUR TIME TO SHINE*/
@@ -51,8 +51,8 @@ int main (int argc, char *argv[])
 	map<string, double> new_data;
 
         /* Read in the csv */
-	const string newdata = argv[2]; // input file name
-	const string stephandata = argv[1]; // input file name
+	const string newdata = argv[1]; // input file name
+	const string stephandata = argv[2]; // input file name
 	const string tname = argv[3]; // tissue name
 
 	auto stephanmap = read_csv(stephandata, tname);
